@@ -10,6 +10,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import Datos.*;
 import Alumno.*;
+import Control.*;
 import java.util.Date;
 import javax.swing.ImageIcon;
 
@@ -45,7 +46,7 @@ public class LOGIN extends javax.swing.JFrame {
         txtUsu = new javax.swing.JTextField();
         txtClave = new javax.swing.JPasswordField();
         btnSalir = new javax.swing.JButton();
-        btnIngreso = new javax.swing.JButton();
+        btnIngresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,13 +75,13 @@ public class LOGIN extends javax.swing.JFrame {
         });
         jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 187, -1, -1));
 
-        btnIngreso.setText("Ingresar");
-        btnIngreso.addActionListener(new java.awt.event.ActionListener() {
+        btnIngresar.setText("Ingresar");
+        btnIngresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIngresoActionPerformed(evt);
+                btnIngresarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, -1, 30));
+        jPanel1.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -106,15 +107,15 @@ public class LOGIN extends javax.swing.JFrame {
         }        // TODO add your handling code here:
     }//GEN-LAST:event_txtClaveKeyPressed
 
-    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {
-    String usuario = txtUsuario.getText();
-    String contraseña = new String(txtPass.getPassword());
+    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
+        String usuario = txtUsu.getText();
+    String pass = new String(txtClave.getPassword());
 
     DALUsuario dalUsuario = new DALUsuario();
-    Object[] resultado = dalUsuario.validarLogin(usuario, contraseña);
+    Object[] resultado = dalUsuario.validarLogin(usuario, pass);
 
     int rol = (int) resultado[0];
-    Integer idUsuario = (Integer) resultado[1];
+    Integer id = (Integer) resultado[1];
 
     if (rol == 1) {
         JOptionPane.showMessageDialog(this, "¡Bienvenido, Administrador!");
@@ -123,10 +124,10 @@ public class LOGIN extends javax.swing.JFrame {
         IU_GESTIONUSUARIO gestionUsuario = new IU_GESTIONUSUARIO();
         gestionUsuario.setVisible(true);
         this.dispose();
-    } else if (rol == 2 && idUsuario != null) {
+    } else if (rol == 2 && id != null) {
         // Usamos el método consultarporID de BLLUsuario para obtener los datos del alumno
         BLLUsuario bllUsuario = new BLLUsuario();
-        Object[] datosAlumno = bllUsuario.consultarporID(idUsuario, lblFoto);
+        Object[] datosAlumno = bllUsuario.consultarporID(id, lblFoto);
         
         // Redirigir al JFrame del Alumno (Alumno)
         Alumno alumno = new Alumno();
@@ -149,9 +150,7 @@ public class LOGIN extends javax.swing.JFrame {
     } else {
         JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos.");
     }
-}
-//GEN-LAST:event_btnIngresoActionPerformed
-
+    }//GEN-LAST:event_btnIngresarActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -162,7 +161,7 @@ public class LOGIN extends javax.swing.JFrame {
     //}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnIngreso;
+    private javax.swing.JButton btnIngresar;
     private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

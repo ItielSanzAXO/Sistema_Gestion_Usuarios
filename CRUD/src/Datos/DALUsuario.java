@@ -201,7 +201,7 @@ public class DALUsuario {
 
     }
     
-    public int validarLogin(String usuario, String contraseña) {
+    public int validarLogin(String usuario, String pass) {
     String sqlAdmin = "SELECT 'admin' AS rol FROM public.admin WHERE \"user\" = ? AND pass = ?";
     String sqlAlumno = "SELECT 'alumno' AS rol FROM public.usuario WHERE usuario = ? AND clave = ? AND estado = 1";
 
@@ -210,7 +210,7 @@ public class DALUsuario {
 
         // Verificar si es administrador
         stmtAdmin.setString(1, usuario);
-        stmtAdmin.setString(2, contraseña);
+        stmtAdmin.setString(2, pass);
         try (ResultSet rsAdmin = stmtAdmin.executeQuery()) {
             if (rsAdmin.next()) {
                 return 1; // Rol de administrador
@@ -219,7 +219,7 @@ public class DALUsuario {
 
         // Verificar si es alumno
         stmtAlumno.setString(1, usuario);
-        stmtAlumno.setString(2, contraseña);
+        stmtAlumno.setString(2, pass);
         try (ResultSet rsAlumno = stmtAlumno.executeQuery()) {
             if (rsAlumno.next()) {
                 return 2; // Rol de alumno
