@@ -38,8 +38,10 @@ public class BLLUsuario {
         dal.buscarLista(model, tabla, dato);
     }
     
+    //public Object[] consultaporID(int id){
     public Object[] consultarporID(int id, JLabel lblFoto){
         return dal.consultarporID (id, lblFoto);
+        //return dal.consultarporID(id );
     }
     
     public void eliminarUsuario(Usuario u){
