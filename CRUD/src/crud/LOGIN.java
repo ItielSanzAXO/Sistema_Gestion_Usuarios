@@ -109,7 +109,7 @@ public class LOGIN extends javax.swing.JFrame {
     }//GEN-LAST:event_txtClaveKeyPressed
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-        String usuario = txtUsu.getText();
+         String usuario = txtUsu.getText();
     String pass = new String(txtClave.getPassword());
 
     DALUsuario dalUsuario = new DALUsuario();
@@ -120,29 +120,29 @@ public class LOGIN extends javax.swing.JFrame {
 
     if (rol == 1) {
         JOptionPane.showMessageDialog(this, "¡Bienvenido, Administrador!");
-        
+
         // Redirigir al JFrame del Administrador (IU_GESTIONUSUARIO)
         IU_GESTIONUSUARIO gestionUsuario = new IU_GESTIONUSUARIO();
         gestionUsuario.setVisible(true);
         this.dispose();
     } else if (rol == 2 && id != null) {
         // Usamos el método consultarporID para obtener los datos del alumno
-        Object [] datos=bll.consultarporID(id, lblFoto);
-        
+        Object[] datos = bll.consultarporID(id, lblFoto);
+
         // Redirigir al JFrame del Alumno (Alumno)
         Alumno alumno = new Alumno();
 
         // Asignamos los datos del alumno al JFrame de Alumno
         alumno.setDatosAlumno(
-            datosAlumno[0].toString(), // Matricula
-            datosAlumno[1].toString(), // Nombre
-            datosAlumno[2].toString(), // Apellidos
-            datosAlumno[3].toString(), // Correo
-            datosAlumno[4].toString(), // Teléfono
-            datosAlumno[5].toString(), // Usuario
-            datosAlumno[6].toString(), // Clave
-            (Date) datosAlumno[7],     // Fecha
-            (ImageIcon) datosAlumno[8] // Foto
+            datos[0].toString(),  // Matricula
+            datos[1].toString(),  // Nombre
+            datos[2].toString(),  // Apellidos
+            datos[3].toString(),  // Correo
+            datos[4].toString(),  // Teléfono
+            datos[5].toString(),  // Usuario
+            datos[6].toString(),  // Clave
+            (Date) datos[7],      // Fecha
+            (ImageIcon) datos[8]  // Foto
         );
 
         alumno.setVisible(true);
