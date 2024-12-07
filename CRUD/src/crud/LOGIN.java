@@ -106,9 +106,9 @@ public class LOGIN extends javax.swing.JFrame {
         }        // TODO add your handling code here:
     }//GEN-LAST:event_txtClaveKeyPressed
 
-    private void btnIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresoActionPerformed
-    String usuario = txtUsu.getText();
-    String contraseña = new String(txtClave.getPassword());
+    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {
+    String usuario = txtUsuario.getText();
+    String contraseña = new String(txtPass.getPassword());
 
     DALUsuario dalUsuario = new DALUsuario();
     Object[] resultado = dalUsuario.validarLogin(usuario, contraseña);
@@ -124,8 +124,9 @@ public class LOGIN extends javax.swing.JFrame {
         gestionUsuario.setVisible(true);
         this.dispose();
     } else if (rol == 2 && idUsuario != null) {
-        // Usamos el método consultarporID para obtener los datos del alumno
-        Object[] datosAlumno = dalUsuario.consultarporID(idUsuario, lblFoto);
+        // Usamos el método consultarporID de BLLUsuario para obtener los datos del alumno
+        BLLUsuario bllUsuario = new BLLUsuario();
+        Object[] datosAlumno = bllUsuario.consultarporID(idUsuario, lblFoto);
         
         // Redirigir al JFrame del Alumno (Alumno)
         Alumno alumno = new Alumno();
@@ -147,9 +148,9 @@ public class LOGIN extends javax.swing.JFrame {
         this.dispose();
     } else {
         JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos.");
-    }   
-                // TODO add your handling code here:
-    }//GEN-LAST:event_btnIngresoActionPerformed
+    }
+}
+//GEN-LAST:event_btnIngresoActionPerformed
 
     /**
      * @param args the command line arguments
