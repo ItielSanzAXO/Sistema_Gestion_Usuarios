@@ -13,6 +13,7 @@ import Alumno.*;
 import Control.*;
 import java.util.Date;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 
 /**
@@ -109,7 +110,7 @@ public class LOGIN extends javax.swing.JFrame {
     }//GEN-LAST:event_txtClaveKeyPressed
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-         String usuario = txtUsu.getText();
+    String usuario = txtUsu.getText();
     String pass = new String(txtClave.getPassword());
 
     DALUsuario dalUsuario = new DALUsuario();
@@ -126,25 +127,12 @@ public class LOGIN extends javax.swing.JFrame {
         gestionUsuario.setVisible(true);
         this.dispose();
     } else if (rol == 2 && id != null) {
-        // Usamos el método consultarporID para obtener los datos del alumno
-        Object[] datos = bll.consultarporID(id, lblFoto);
-
         // Redirigir al JFrame del Alumno (Alumno)
         Alumno alumno = new Alumno();
 
-        // Asignamos los datos del alumno al JFrame de Alumno
-        alumno.setDatosAlumno(
-            datos[0].toString(),  // Matricula
-            datos[1].toString(),  // Nombre
-            datos[2].toString(),  // Apellidos
-            datos[3].toString(),  // Correo
-            datos[4].toString(),  // Teléfono
-            datos[5].toString(),  // Usuario
-            datos[6].toString(),  // Clave
-            (Date) datos[7],      // Fecha
-            (ImageIcon) datos[8]  // Foto
-        );
-
+        // Asignamos solo el ID del Alumno, para despues cargarlo
+        alumno.setIdAlumno(id);
+        System.out.println("El id del alumno es: " + id);
         alumno.setVisible(true);
         this.dispose();
     } else {

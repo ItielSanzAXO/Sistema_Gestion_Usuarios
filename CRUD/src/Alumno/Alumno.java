@@ -31,36 +31,25 @@ public class Alumno extends javax.swing.JFrame {
     /**
      * Creates new form Alumno
      */
-    Validar v=new Validar();
-   DefaultTableModel modelo_tabla;
+   Validar v=new Validar();
    BLLUsuario bll=new BLLUsuario();
    FileInputStream fis;
    int longitudBytes, apretafoto=0, id=0;
    boolean consultar=false;
    Usuario u=new Usuario();
+   private int idAlumno;
+   
     public Alumno() {
         initComponents();
         metodosDeInicio();
     }
 
-    public void setDatosAlumno(String matricula, String nombre, String apellidos, 
-                           String correo, String telefono, String usuario, 
-                           String clave, Date fecha, ImageIcon foto) {
-    // Asignar los datos a los campos de texto en el JFrame Alumno
-    txtmatricula.setText(matricula);
-    txtnombre.setText(nombre);
-    txtapellidos.setText(apellidos);
-    txtcorreo.setText(correo);
-    txttelefono.setText(telefono);
-    txtUsuario.setText(usuario);
-    txtclave.setText(clave);
-    jdateFecha.setDate(fecha);
+    public void setIdAlumno(int id){
+        this.idAlumno = id;
+    }
+
     
-    // Mostrar la foto del alumno en el JLabel
-    lblFoto.setIcon(foto);
-}
-    
-    public final void metodosDeInicio(){
+public final void metodosDeInicio(){
         
     v.validarSoloLetreas(txtnombre);
     v.validarSoloLetreas(txtapellidos);
@@ -79,7 +68,7 @@ public class Alumno extends javax.swing.JFrame {
     txtUsuario.setDocument(new ConvertirMayusculas());
     }
     
-    public boolean validarFormatoCorreo(String correo){
+public boolean validarFormatoCorreo(String correo){
     
     Pattern pat = null ;
     Matcher mat = null ;
@@ -94,7 +83,7 @@ public class Alumno extends javax.swing.JFrame {
         }
     }
 
-    public void validarIngreso(){
+public void validarIngreso(){
         String mat=txtmatricula.getText().trim();
         int tam = mat.length();
         String nom=txtnombre.getText().trim();
