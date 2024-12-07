@@ -201,9 +201,11 @@ public class DALUsuario {
 
     }
     
-    public int validarLogin(String usuario, String pass) {
+    public Object[] validarLogin(String usuario, String pass) {
     String sqlAdmin = "SELECT 'admin' AS rol FROM public.admin WHERE \"user\" = ? AND pass = ?";
-    String sqlAlumno = "SELECT 'alumno' AS rol FROM public.usuario WHERE usuario = ? AND clave = ? AND estado = 1";
+    String sqlAlumno = "SELECT idusuario, 'alumno' AS rol FROM public.usuario WHERE usuario = ? AND clave = ? AND estado = 1";
+
+    Object[] resultado = new Object[2];  // Array para almacenar rol y id
 
     try (PreparedStatement stmtAdmin = con.getCont().prepareStatement(sqlAdmin);
          PreparedStatement stmtAlumno = con.getCont().prepareStatement(sqlAlumno)) {
@@ -213,7 +215,9 @@ public class DALUsuario {
         stmtAdmin.setString(2, pass);
         try (ResultSet rsAdmin = stmtAdmin.executeQuery()) {
             if (rsAdmin.next()) {
-                return 1; // Rol de administrador
+                resultado[0] = 1; // Rol de administrador
+                resultado[1] = null; // No se necesita ID para administrador
+                return resultado;
             }
         }
 
@@ -222,15 +226,21 @@ public class DALUsuario {
         stmtAlumno.setString(2, pass);
         try (ResultSet rsAlumno = stmtAlumno.executeQuery()) {
             if (rsAlumno.next()) {
-                return 2; // Rol de alumno
+                resultado[0] = 2; // Rol de alumno
+                resultado[1] = rsAlumno.getInt("idusuario"); // Obtener ID del alumno
+                return resultado;
             }
         }
-        } catch (Exception e) {
-            System.out.println("Error al validar login: " + e);
-        }
 
-        return 0; // Usuario o contraseña incorrectos
+    } catch (Exception e) {
+        System.out.println("Error al validar login: " + e);
     }
+
+    resultado[0] = 0; // Usuario o contraseña incorrectos
+    resultado[1] = null;
+    return resultado;
+}
+
 
 
 }
