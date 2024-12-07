@@ -9,7 +9,7 @@ package crud;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import Datos.*;
-
+import Alumno.*;
 
 
 /**
@@ -105,19 +105,19 @@ public class LOGIN extends javax.swing.JFrame {
     }//GEN-LAST:event_txtClaveKeyPressed
 
     private void btnIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresoActionPerformed
-    String usuario = txtUsuario.getText();
-    String contraseña = new String(txtPass.getPassword());
+    String usuario = txtUsu.getText();
+    String contraseña = new String(txtClave.getPassword());
 
     DALUsuario dalUsuario = new DALUsuario();
     int rol = dalUsuario.validarLogin(usuario, contraseña);
 
     if (rol == 1) {
         JOptionPane.showMessageDialog(this, "¡Bienvenido, Administrador!");
-        new PantallaAdmin().setVisible(true); // Abre la pantalla de admin
+        new IU_GESTIONUSUARIO().setVisible(true); // Abre la pantalla de admin
         this.dispose(); // Cierra la ventana de login
     } else if (rol == 2) {
         JOptionPane.showMessageDialog(this, "¡Bienvenido, Alumno!");
-        new PantallaAlumno().setVisible(true); // Abre la pantalla de alumno
+        new Alumno().setVisible(true);  // Abre la pantalla de alumno
         this.dispose(); // Cierra la ventana de login
     } else {
         JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos.");
