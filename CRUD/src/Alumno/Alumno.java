@@ -42,12 +42,35 @@ public class Alumno extends javax.swing.JFrame {
     public Alumno() {
         initComponents();
         metodosDeInicio();
+        cargarDatosAlumno();
     }
 
     public void setIdAlumno(int id){
         this.idAlumno = id;
     }
 
+     public void cargarDatosAlumno() {
+        // Aquí, consulta los datos del alumno con el idAlumno y asigna los valores a los componentes
+        DALUsuario dal = new DALUsuario();
+        Object[] datos = dal.consultarporID(idAlumno, lblFoto);
+
+        if (datos != null) {
+            // Asignamos los datos al JFrame de Alumno
+            lblMatricula.setText(datos[0].toString());
+            lblNombre.setText(datos[1].toString());
+            lblApellidos.setText(datos[2].toString());
+            lblCorreo.setText(datos[3].toString());
+            lblTelefono.setText(datos[4].toString());
+            lblUsuario.setText(datos[5].toString());
+            lblClave.setText(datos[6].toString());
+            lblFecha.setText(datos[7].toString());
+
+            // Establecer la foto en lblFoto
+            lblFoto.setIcon((ImageIcon) datos[8]);
+        } else {
+            JOptionPane.showMessageDialog(this, "No se encontraron datos para el alumno.");
+        }
+    }
     
 public final void metodosDeInicio(){
         
