@@ -570,7 +570,11 @@ public void limpiarTodo(){
     }//GEN-LAST:event_btneliminar1ActionPerformed
 
     private void btnsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalirActionPerformed
-    System.exit(0);        // TODO add your handling code here:
+        LOGIN login = new LOGIN();
+        login.setLocationRelativeTo(null);
+        login.setVisible(true);
+        this.dispose();
+        // TODO add your handling code here:
     }//GEN-LAST:event_btnsalirActionPerformed
 
     /**

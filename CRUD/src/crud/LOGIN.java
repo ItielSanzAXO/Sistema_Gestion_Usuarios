@@ -23,8 +23,6 @@ import javax.swing.JLabel;
 public class LOGIN extends javax.swing.JFrame {
 
     public static Conexion hc;
-   BLLUsuario bll=new BLLUsuario();
-
     private int intentos;
 
     /**
@@ -75,7 +73,7 @@ public class LOGIN extends javax.swing.JFrame {
                 btnSalirActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 187, -1, -1));
+        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 180, -1, 30));
 
         btnIngresar.setText("Ingresar");
         btnIngresar.addActionListener(new java.awt.event.ActionListener() {
@@ -83,7 +81,7 @@ public class LOGIN extends javax.swing.JFrame {
                 btnIngresarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, -1, -1));
+        jPanel1.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 180, -1, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -124,15 +122,18 @@ public class LOGIN extends javax.swing.JFrame {
 
         // Redirigir al JFrame del Administrador (IU_GESTIONUSUARIO)
         IU_GESTIONUSUARIO gestionUsuario = new IU_GESTIONUSUARIO();
+        gestionUsuario.setLocationRelativeTo(null);
         gestionUsuario.setVisible(true);
         this.dispose();
     } else if (rol == 2 && id != null) {
         // Redirigir al JFrame del Alumno (Alumno)
+        JOptionPane.showMessageDialog(this, "¡Bienvenido, Alumn@!");
         Alumno alumno = new Alumno();
 
         // Asignamos solo el ID del Alumno, para despues cargarlo
         alumno.setIdAlumno(id);
         System.out.println("El id del alumno es: " + id);
+        alumno.setLocationRelativeTo(null);
         alumno.setVisible(true);
         this.dispose();
     } else {

@@ -8,6 +8,7 @@ import Control.BLLUsuario;
 import Control.ConvertirMayusculas;
 import Control.Validar;
 import Datos.*;
+import crud.LOGIN;
 import java.awt.Image;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -443,7 +444,11 @@ public void limpiarTodo(){
     }//GEN-LAST:event_btnfotoActionPerformed
 
     private void btnsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalirActionPerformed
-        System.exit(0);        // TODO add your handling code here:
+        LOGIN login = new LOGIN();
+        login.setLocationRelativeTo(null);
+        login.setVisible(true);
+        this.dispose();
+        // TODO add your handling code here:
     }//GEN-LAST:event_btnsalirActionPerformed
 
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
