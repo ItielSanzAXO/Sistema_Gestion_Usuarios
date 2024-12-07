@@ -42,6 +42,23 @@ public class Alumno extends javax.swing.JFrame {
         initComponents();
         metodosDeInicio();
     }
+
+    public void setDatosAlumno(String matricula, String nombre, String apellidos, 
+                           String correo, String telefono, String usuario, 
+                           String clave, Date fecha, ImageIcon foto) {
+    // Asignar los datos a los campos de texto en el JFrame Alumno
+    txtMatricula.setText(matricula);
+    txtNombre.setText(nombre);
+    txtApellidos.setText(apellidos);
+    txtCorreo.setText(correo);
+    txtTelefono.setText(telefono);
+    txtUsuario.setText(usuario);
+    txtClave.setText(clave);
+    jdateFecha.setDate(fecha);
+    
+    // Mostrar la foto del alumno en el JLabel
+    lblFoto.setIcon(foto);
+}
     
     public final void metodosDeInicio(){
         
