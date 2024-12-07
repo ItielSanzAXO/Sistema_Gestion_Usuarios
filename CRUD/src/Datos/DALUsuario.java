@@ -201,23 +201,36 @@ public class DALUsuario {
 
     }
     
-    public boolean validarLogin(String usuario, String contraseña) {
-    String sql = "SELECT \"user\", pass FROM public.admin WHERE \"user\" = ? AND pass = ?";
-    
-    try (PreparedStatement stmt = con.getCont().prepareStatement(sql)) {
-        stmt.setString(1, usuario);  // Primer parámetro: nombre de usuario
-        stmt.setString(2, contraseña);  // Segundo parámetro: contraseña
+    public int validarLogin(String usuario, String contraseña) {
+    String sqlAdmin = "SELECT 'admin' AS rol FROM public.admin WHERE \"user\" = ? AND pass = ?";
+    String sqlAlumno = "SELECT 'alumno' AS rol FROM public.usuario WHERE usuario = ? AND clave = ? AND estado = 1";
 
-        try (ResultSet rs = stmt.executeQuery()) {
-            if (rs.next()) {
-                return true;  // Login exitoso
+    try (PreparedStatement stmtAdmin = con.getCont().prepareStatement(sqlAdmin);
+         PreparedStatement stmtAlumno = con.getCont().prepareStatement(sqlAlumno)) {
+
+        // Verificar si es administrador
+        stmtAdmin.setString(1, usuario);
+        stmtAdmin.setString(2, contraseña);
+        try (ResultSet rsAdmin = stmtAdmin.executeQuery()) {
+            if (rsAdmin.next()) {
+                return 1; // Rol de administrador
             }
         }
-    } catch (Exception e) {
-        System.out.println("Error al validar login: " + e);
+
+        // Verificar si es alumno
+        stmtAlumno.setString(1, usuario);
+        stmtAlumno.setString(2, contraseña);
+        try (ResultSet rsAlumno = stmtAlumno.executeQuery()) {
+            if (rsAlumno.next()) {
+                return 2; // Rol de alumno
+            }
+        }
+        } catch (Exception e) {
+            System.out.println("Error al validar login: " + e);
+        }
+
+        return 0; // Usuario o contraseña incorrectos
     }
 
-    return false;  // Login fallido
-}
 
 }
