@@ -10,7 +10,11 @@ import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import Datos.*;
 import Alumno.*;
+<<<<<<< Updated upstream
 import Control.*;
+=======
+import Control.BLLUsuario;
+>>>>>>> Stashed changes
 import java.util.Date;
 import javax.swing.ImageIcon;
 
@@ -22,6 +26,7 @@ import javax.swing.ImageIcon;
 public class LOGIN extends javax.swing.JFrame {
 
     public static Conexion hc;
+   BLLUsuario bll=new BLLUsuario();
 
     private int intentos;
 
@@ -124,10 +129,16 @@ public class LOGIN extends javax.swing.JFrame {
         IU_GESTIONUSUARIO gestionUsuario = new IU_GESTIONUSUARIO();
         gestionUsuario.setVisible(true);
         this.dispose();
+<<<<<<< Updated upstream
     } else if (rol == 2 && id != null) {
         // Usamos el método consultarporID de BLLUsuario para obtener los datos del alumno
         BLLUsuario bllUsuario = new BLLUsuario();
         Object[] datosAlumno = bllUsuario.consultarporID(id, lblFoto);
+=======
+    } else if (rol == 2 && idUsuario != null) {
+        // Usamos el método consultarporID para obtener los datos del alumno
+        Object [] datos=bll.consultarporID(id, lblFoto);
+>>>>>>> Stashed changes
         
         // Redirigir al JFrame del Alumno (Alumno)
         Alumno alumno = new Alumno();

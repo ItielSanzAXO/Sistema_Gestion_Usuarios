@@ -78,6 +78,7 @@ public class Alumno extends javax.swing.JFrame {
     //txtbuscar.setDocument(new ConvertirMayusculas());
     txtUsuario.setDocument(new ConvertirMayusculas());
     }
+    
     public boolean validarFormatoCorreo(String correo){
     
     Pattern pat = null ;
