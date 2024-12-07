@@ -28,10 +28,12 @@ public class BLLUsuario {
     
     public void modificarDatosSinFoto(Usuario u){
         dal.modificarDatosSinFoto(u);
+        System.out.println("SIN FOTO");
     }
     
     public void modificarDatosConFoto(Usuario u){
         dal.modificarDatosConFoto(u);
+        System.out.println("CON FOTO");
     }
     
     public void buscarLista(DefaultTableModel model, JTable tabla, String dato) {

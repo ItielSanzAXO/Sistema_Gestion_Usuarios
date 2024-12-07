@@ -84,7 +84,7 @@ public class DALUsuario {
     }
 
     public void modificarDatosSinFoto(Usuario u) {
-
+        System.out.println("UPDATE SIN FOTO");
         try {
             String sql = "UPDATE usuario SET matricula=?, nombre=?, apellidos=?, correo=?, telefono=?, \n"
                     + "usuario=?, clave=?, fecha='" + u.getFecha() + "'\n"
@@ -100,6 +100,7 @@ public class DALUsuario {
             //ps.setInt(8, u.getIdusuario();
             ps.setInt(8, u.getIdusuario());
             boolean ejecucion = con.ejecutarSQL(ps);
+            System.out.println(""+ejecucion);
             if (ejecucion == true) {
 
                 JOptionPane.showMessageDialog(null, "Usuario Correctamente Actualizado ");
@@ -114,7 +115,7 @@ public class DALUsuario {
     }
 
     public void modificarDatosConFoto(Usuario u) {
-
+        System.out.println("UPDATE CON FOTO");
         try {
             String sql = "UPDATE usuario SET matricula=?, nombre=?, apellidos=?, correo=?, telefono=?, \n"
                     + "usuario=?, clave=?, foto=?, fecha='" + u.getFecha() + "'\n"
@@ -130,6 +131,7 @@ public class DALUsuario {
             ps.setBinaryStream(8, u.getFis(), u.getLongitudBytes());
             ps.setInt(9, u.getIdusuario());
             boolean ejecucion = con.ejecutarSQL(ps);
+            System.out.println("" + ejecucion );
             if (ejecucion == true) {
 
                 JOptionPane.showMessageDialog(null, "Usuario Correctamente Actualizado ");

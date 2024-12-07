@@ -7,7 +7,7 @@ package Alumno;
 import Control.BLLUsuario;
 import Control.ConvertirMayusculas;
 import Control.Validar;
-import Datos.Usuario;
+import Datos.*;
 import java.awt.Image;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -37,12 +37,11 @@ public class Alumno extends javax.swing.JFrame {
    int longitudBytes, apretafoto=0, id=0;
    boolean consultar=false;
    Usuario u=new Usuario();
-   private int idAlumno;
+   public int idAlumno;
    
     public Alumno() {
         initComponents();
         metodosDeInicio();
-        cargarDatosAlumno();
     }
 
     public void setIdAlumno(int id){
@@ -51,25 +50,36 @@ public class Alumno extends javax.swing.JFrame {
 
      public void cargarDatosAlumno() {
         // Aquí, consulta los datos del alumno con el idAlumno y asigna los valores a los componentes
-        DALUsuario dal = new DALUsuario();
-        Object[] datos = dal.consultarporID(idAlumno, lblFoto);
+        //DALUsuario dal = new DALUsuario();
+        Object[] datos = bll.consultarporID(idAlumno, lblFoto);
 
-        if (datos != null) {
+        //if (datos != null) {
+            consultar = true;
             // Asignamos los datos al JFrame de Alumno
-            lblMatricula.setText(datos[0].toString());
-            lblNombre.setText(datos[1].toString());
-            lblApellidos.setText(datos[2].toString());
-            lblCorreo.setText(datos[3].toString());
-            lblTelefono.setText(datos[4].toString());
-            lblUsuario.setText(datos[5].toString());
-            lblClave.setText(datos[6].toString());
-            lblFecha.setText(datos[7].toString());
-
+            txtmatricula.setText(datos[0].toString());
+            txtnombre.setText(datos[1].toString());
+            txtapellidos.setText(datos[2].toString());
+            txtcorreo.setText(datos[3].toString());
+            txttelefono.setText(datos[4].toString());
+            txtUsuario.setText(datos[5].toString());
+            txtclave.setText(datos[6].toString());
+            jdateFecha.setDate((Date)datos[7]);
             // Establecer la foto en lblFoto
+            try{
             lblFoto.setIcon((ImageIcon) datos[8]);
-        } else {
-            JOptionPane.showMessageDialog(this, "No se encontraron datos para el alumno.");
+            }catch(Exception e){
+            }
+        //} else {
+        //    JOptionPane.showMessageDialog(this, "No se encontraron datos para el alumno.");
+        //}
+    }
+     
+    @Override
+    public void setVisible(boolean visible) {
+        if (visible) {
+            cargarDatosAlumno();
         }
+        super.setVisible(visible);
     }
     
 public final void metodosDeInicio(){
@@ -167,7 +177,7 @@ public void botonGuardar(){
     String clave=txtclave.getText();
     Date fech=jdateFecha.getDate();
     
-    u.setIdusuario(id);
+    u.setIdusuario(idAlumno);
     u.setMatricula(matri);
     u.setNombre(nom);
     u.setApellidos(ap);
@@ -192,8 +202,8 @@ public void botonGuardar(){
         }else if(apretafoto == 1) {
             bll.modificarDatosConFoto(u);
         }
-        
-        limpiarTodo();
+        JOptionPane.showMessageDialog(this, "Ahora salte");
+        //limpiarTodo();
     }
     
 }
