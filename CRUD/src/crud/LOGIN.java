@@ -105,23 +105,47 @@ public class LOGIN extends javax.swing.JFrame {
     }//GEN-LAST:event_txtClaveKeyPressed
 
     private void btnIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresoActionPerformed
-    String usuario = txtUsu.getText();
-    String contraseña = new String(txtClave.getPassword());
+    String usuario = txtUsuario.getText();
+    String contraseña = new String(txtPass.getPassword());
 
     DALUsuario dalUsuario = new DALUsuario();
-    int rol = dalUsuario.validarLogin(usuario, contraseña);
+    Object[] resultado = dalUsuario.validarLogin(usuario, contraseña);
+
+    int rol = (int) resultado[0];
+    Integer idUsuario = (Integer) resultado[1];
 
     if (rol == 1) {
         JOptionPane.showMessageDialog(this, "¡Bienvenido, Administrador!");
-        new IU_GESTIONUSUARIO().setVisible(true); // Abre la pantalla de admin
-        this.dispose(); // Cierra la ventana de login
-    } else if (rol == 2) {
-        JOptionPane.showMessageDialog(this, "¡Bienvenido, Alumno!");
-        new Alumno().setVisible(true);  // Abre la pantalla de alumno
-        this.dispose(); // Cierra la ventana de login
+        
+        // Redirigir al JFrame del Administrador (IU_GESTIONUSUARIO)
+        IU_GESTIONUSUARIO gestionUsuario = new IU_GESTIONUSUARIO();
+        gestionUsuario.setVisible(true);
+        this.dispose();
+    } else if (rol == 2 && idUsuario != null) {
+        // Usamos el método consultarporID para obtener los datos del alumno
+        Object[] datosAlumno = dalUsuario.consultarporID(idUsuario, lblFoto);
+        
+        // Redirigir al JFrame del Alumno (Alumno)
+        Alumno alumno = new Alumno();
+
+        // Asignamos los datos del alumno al JFrame de Alumno
+        alumno.setDatosAlumno(
+            datosAlumno[0].toString(), // Matricula
+            datosAlumno[1].toString(), // Nombre
+            datosAlumno[2].toString(), // Apellidos
+            datosAlumno[3].toString(), // Correo
+            datosAlumno[4].toString(), // Teléfono
+            datosAlumno[5].toString(), // Usuario
+            datosAlumno[6].toString(), // Clave
+            (Date) datosAlumno[7],     // Fecha
+            (ImageIcon) datosAlumno[8] // Foto
+        );
+
+        alumno.setVisible(true);
+        this.dispose();
     } else {
         JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos.");
-    }    
+    }   
                 // TODO add your handling code here:
     }//GEN-LAST:event_btnIngresoActionPerformed
 
