@@ -105,29 +105,22 @@ public class LOGIN extends javax.swing.JFrame {
     }//GEN-LAST:event_txtClaveKeyPressed
 
     private void btnIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresoActionPerformed
-// Obtén los valores ingresados por el usuario
-    String usuario = txtUsu.getText();  // Asumimos que txtUsu es el campo de usuario
-    String contraseña = new String(txtClave.getPassword());  // Asumimos que txtClave es el campo de la contraseña
-    
-    // Crear una instancia de DALUsuario para utilizar el método de login
+    String usuario = txtUsuario.getText();
+    String contraseña = new String(txtPass.getPassword());
+
     DALUsuario dalUsuario = new DALUsuario();
-    
-    // Validar el login con los valores proporcionados
-    if (dalUsuario.validarLogin(usuario, contraseña)) {
-        // Si el login es correcto, cierra la ventana actual y abre la siguiente ventana
-        this.dispose();
-        JOptionPane.showMessageDialog(null, "Has Ingresado Exitosamente Al sistema");
-        IU_GESTIONUSUARIO m = new IU_GESTIONUSUARIO();
-        m.setVisible(true);
+    int rol = dalUsuario.validarLogin(usuario, contraseña);
+
+    if (rol == 1) {
+        JOptionPane.showMessageDialog(this, "¡Bienvenido, Administrador!");
+        new PantallaAdmin().setVisible(true); // Abre la pantalla de admin
+        this.dispose(); // Cierra la ventana de login
+    } else if (rol == 2) {
+        JOptionPane.showMessageDialog(this, "¡Bienvenido, Alumno!");
+        new PantallaAlumno().setVisible(true); // Abre la pantalla de alumno
+        this.dispose(); // Cierra la ventana de login
     } else {
-        // Si las credenciales son incorrectas
-        JOptionPane.showMessageDialog(null, "Usuario Y/O Contraseña Son Incorrectas");
-        intentos++;
-        //Limite de intentos
-        if (intentos > 2) {
-            JOptionPane.showMessageDialog(null, "Limite De Ingresos");
-            System.exit(0);
-        }
+        JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos.");
     }    
                 // TODO add your handling code here:
     }//GEN-LAST:event_btnIngresoActionPerformed
