@@ -124,11 +124,21 @@ public class LOGIN extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "¡Bienvenido, Alumn@!");
         Alumno alumno = new Alumno();
 
-        // Asignamos solo el ID del Alumno, para despues cargarlo
+        // Asignamos solo el ID del Alumno, para después cargarlo
         alumno.setIdAlumno(id);
         System.out.println("El id del alumno es: " + id);
         alumno.setLocationRelativeTo(null);
         alumno.setVisible(true);
+        this.dispose();
+    } else if (rol == 3 && id != null) {
+        // Redirigir al JFrame del Profesor (Profesor)
+        JOptionPane.showMessageDialog(this, "¡Bienvenido, Profesor!");
+        Profesor profesor = new Profesor();
+
+        // Asignamos solo el ID del Profesor, para después cargarlo (opcional)
+        System.out.println("El id del profesor es: " + id);
+        profesor.setLocationRelativeTo(null);
+        profesor.setVisible(true);
         this.dispose();
     } else {
         JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos.");
