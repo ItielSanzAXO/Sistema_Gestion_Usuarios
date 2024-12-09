@@ -69,21 +69,39 @@ public class IU_GESTIONUSUARIO extends javax.swing.JFrame {
 
     public final void metodosDeInicio(){
         
-    v.validarSoloLetreas(txtnombre);
-    v.validarSoloLetreas(txtapellidos);
-    v.validarSoloNumeros(txtmatricula);
-    v.validarSoloNumeros(txttelefono);
-    v.limitarCaracteres(txtmatricula, 9);
-    v.limitarCaracteres(txtnombre,  100);
-    v.limitarCaracteres(txtapellidos, 100);
-    v.limitarCaracteres(txtcorreo, 100);
-    v.limitarCaracteres(txttelefono, 20);
-    v.limitarCaracteres(txtUsuario, 20);
-    v.limitarCaracteres(txtclave, 50);
-    txtnombre.setDocument(new ConvertirMayusculas());
-    txtapellidos.setDocument(new ConvertirMayusculas());
-    txtbuscar.setDocument(new ConvertirMayusculas());
-    txtUsuario.setDocument(new ConvertirMayusculas());
+    //Alumno
+        v.validarSoloLetreas(txtnombre);
+        v.validarSoloLetreas(txtapellidos);
+        v.validarSoloNumeros(txtmatricula);
+        v.validarSoloNumeros(txttelefono);
+    //Limitar caracteres 
+        v.limitarCaracteres(txtmatricula, 9);
+        v.limitarCaracteres(txtnombre,  100);
+        v.limitarCaracteres(txtapellidos, 100);
+        v.limitarCaracteres(txtcorreo, 100);
+        v.limitarCaracteres(txttelefono, 20);
+        v.limitarCaracteres(txtUsuario, 20);
+        v.limitarCaracteres(txtclave, 50);
+    //Convertir a Mayus
+        txtnombre.setDocument(new ConvertirMayusculas());
+        txtapellidos.setDocument(new ConvertirMayusculas());
+        txtbuscar.setDocument(new ConvertirMayusculas());
+        txtUsuario.setDocument(new ConvertirMayusculas());
+    
+    //Profesor
+        v.validarSoloLetreas(txtNombreProfe);
+        v.validarSoloLetreas(txtApellidosProfe);
+        v.validarSoloLetreas(txtCorreoProfe);
+        v.validarSoloNumeros(txtTelefonoProfe);
+        v.validarSoloLetreas(txtUsuarioProfe);
+        v.validarSoloLetreas(txtClaveProfe);
+    //Limitar caracteres
+        v.limitarCaracteres(txtNombreProfe, 20);
+        v.limitarCaracteres(txtApellidosProfe, 100);
+        v.limitarCaracteres(txtCorreoProfe, 100);
+        v.limitarCaracteres(txtApellidosProfe,10);
+        v.limitarCaracteres(txtUsuarioProfe, 20);
+        v.limitarCaracteres(txtClaveProfe, 50);
     }
 
     public boolean validarFormatoCorreo(String correo){
@@ -120,6 +138,23 @@ public class IU_GESTIONUSUARIO extends javax.swing.JFrame {
         }
         
     } 
+
+    public void validarIngresoProfe(){
+        String nom=txtNombreProfe.getText().trim();
+        String ape=txtApellidosProfe.getText().trim();
+        boolean estado=validarFormatoCorreo(txtCorreoProfe.getText());
+        String tel=txtTelefonoProfe.getText().trim();
+        String usu=txtUsuarioProfe.getText().trim();
+        String contra=txtClaveProfe.getText();
+        
+        if(nom.isEmpty()|ape.isEmpty()||estado==false||tel.isEmpty()
+                ||usu.isEmpty()||contra.isEmpty()){
+        btnGuardarProfe.setEnabled(false);
+        }else{
+            btnGuardarProfe.setEnabled(true);
+        }
+        
+    }
 
 public void cargarFoto(){
     
@@ -193,6 +228,34 @@ public void botonGuardar(){
     
 }
 
+public void botonGuardarProfe(){
+    String nom=txtNombreProfe.getText().trim();
+    String ap=txtApellidosProfe.getText().trim();
+    String correo=txtCorreoProfe.getText().trim();
+    String tel=txtTelefonoProfe.getText().trim();
+    String usu=txtUsuarioProfe.getText().trim();
+    String clave=txtClaveProfe.getText();
+    
+    u.setIdusuario(id);
+    u.setNombre(nom);
+    u.setApellidos(ap);
+    u.setCorreo(correo);
+    u.setTelefono(tel);
+    u.setUsuario(usu);
+    u.setClave(clave);
+    
+    if(consultar==false){
+    //Insertar
+        bll.insertarDatosProfe(u);
+        limpiarTodo();
+     
+    }else if(consultar==true){
+    //Modificar
+        bll.modificarDatosProfe(u);
+        limpiarTodo();
+    }
+}
+
 public void actualizarTabla(){
     //Limpiar
     while(modelo_tabla.getRowCount() >0){
@@ -219,8 +282,34 @@ public void limpiarTodo(){
     actualizarTabla();
     }
 
-    public void buscar(){
-        String dato=txtbuscar.getText();
+public void limpiarTodoProfe(){
+    txtNombreProfe.setText(null);
+    txtApellidosProfe.setText(null);
+    txtCorreoProfe.setText(null);
+    txtTelefonoProfe.setText(null);
+    txtUsuarioProfe.setText(null);
+    txtClaveProfe.setText(null);
+    btnGuardarProfe.setEnabled(false);
+    btnEliminarProfe.setEnabled(false);
+    consultar=false;
+    actualizarTabla();
+    }
+
+    public void buscarProfe(){
+        String dato=txtNombreProfe.getText();
+        if(dato.isEmpty()){
+            actualizarTabla();
+        }else if(!dato.isEmpty()){ 
+            while(modelo_tabla.getRowCount() >0){
+            modelo_tabla.removeRow(0);
+        }
+            bll.buscarListaProfe(modelo_tabla, tblDatos, dato);
+        
+        }
+}
+
+public void buscar(){
+    String dato=txtbuscar.getText();
         if(dato.isEmpty()){
             actualizarTabla();
         }else if(!dato.isEmpty()){ 
@@ -230,7 +319,7 @@ public void limpiarTodo(){
             bll.buscarLista(modelo_tabla, tblDatos, dato);
         
         }
-    }
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
