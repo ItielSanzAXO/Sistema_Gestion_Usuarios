@@ -270,6 +270,23 @@ public void limpiarTodo(){
         btnsalir = new javax.swing.JButton();
         btnguardar = new javax.swing.JButton();
         btneliminar1 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        txtNombreProfe = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        txtApellidosProfe = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        txtCorreoProfe = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        txtTelefonoProfe = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        txtUsuarioProfe = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        txtClaveProfe = new javax.swing.JPasswordField();
+        btnNuevoProfe = new javax.swing.JButton();
+        btnEliminarProfe = new javax.swing.JButton();
+        btnGuardarProfe = new javax.swing.JButton();
+        btnsalir1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -456,7 +473,185 @@ public void limpiarTodo(){
         });
         jPanel2.add(btneliminar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(83, 360, 110, 50));
 
-        pane.addTab("Usuarios", jPanel2);
+        pane.addTab("Alumnos", jPanel2);
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel11.setText("Nombre");
+
+        txtNombreProfe.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtNombreProfeCaretUpdate(evt);
+            }
+        });
+
+        jLabel12.setText("Apellidos");
+
+        txtApellidosProfe.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtApellidosProfeCaretUpdate(evt);
+            }
+        });
+
+        jLabel13.setText("Correo");
+
+        txtCorreoProfe.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtCorreoProfeCaretUpdate(evt);
+            }
+        });
+
+        jLabel14.setText("Telefono");
+
+        txtTelefonoProfe.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtTelefonoProfeCaretUpdate(evt);
+            }
+        });
+
+        jLabel15.setText("Usuario");
+
+        txtUsuarioProfe.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtUsuarioProfeCaretUpdate(evt);
+            }
+        });
+
+        jLabel16.setText("Contraseña");
+
+        txtClaveProfe.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtClaveProfeCaretUpdate(evt);
+            }
+        });
+        txtClaveProfe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtClaveProfeActionPerformed(evt);
+            }
+        });
+
+        btnNuevoProfe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/if_plus-sign_173078.png"))); // NOI18N
+        btnNuevoProfe.setText("Nuevo");
+        btnNuevoProfe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoProfeActionPerformed(evt);
+            }
+        });
+
+        btnEliminarProfe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/if_Bin_2202256.png"))); // NOI18N
+        btnEliminarProfe.setText("Eliminar");
+        btnEliminarProfe.setEnabled(false);
+        btnEliminarProfe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarProfeActionPerformed(evt);
+            }
+        });
+
+        btnGuardarProfe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/if_save_173091.png"))); // NOI18N
+        btnGuardarProfe.setText("Guardar");
+        btnGuardarProfe.setEnabled(false);
+        btnGuardarProfe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarProfeActionPerformed(evt);
+            }
+        });
+
+        btnsalir1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/if_login_173049.png"))); // NOI18N
+        btnsalir1.setText("Salir");
+        btnsalir1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsalir1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 710, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGap(176, 176, 176)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 0, 0)
+                            .addComponent(txtNombreProfe, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGap(176, 176, 176)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 0, 0)
+                            .addComponent(txtApellidosProfe, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGap(176, 176, 176)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 0, 0)
+                            .addComponent(txtCorreoProfe, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGap(176, 176, 176)
+                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 0, 0)
+                            .addComponent(txtTelefonoProfe, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGap(176, 176, 176)
+                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 0, 0)
+                            .addComponent(txtUsuarioProfe, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGap(176, 176, 176)
+                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 0, 0)
+                            .addComponent(txtClaveProfe, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnNuevoProfe, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGap(49, 49, 49)
+                            .addComponent(btnEliminarProfe, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(107, 107, 107)
+                            .addComponent(btnGuardarProfe, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(170, 170, 170)
+                            .addComponent(btnsalir1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 430, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtNombreProfe, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(10, 10, 10)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtApellidosProfe, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(10, 10, 10)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtCorreoProfe, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(10, 10, 10)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtTelefonoProfe, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(10, 10, 10)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtUsuarioProfe, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(10, 10, 10)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtClaveProfe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnNuevoProfe, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(20, 20, 20)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(btnEliminarProfe, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnGuardarProfe, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnsalir1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        pane.addTab("Profesores", jPanel3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -577,6 +772,50 @@ public void limpiarTodo(){
         // TODO add your handling code here:
     }//GEN-LAST:event_btnsalirActionPerformed
 
+    private void txtNombreProfeCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtNombreProfeCaretUpdate
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreProfeCaretUpdate
+
+    private void txtApellidosProfeCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtApellidosProfeCaretUpdate
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtApellidosProfeCaretUpdate
+
+    private void txtCorreoProfeCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtCorreoProfeCaretUpdate
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCorreoProfeCaretUpdate
+
+    private void txtTelefonoProfeCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtTelefonoProfeCaretUpdate
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTelefonoProfeCaretUpdate
+
+    private void txtUsuarioProfeCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtUsuarioProfeCaretUpdate
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUsuarioProfeCaretUpdate
+
+    private void txtClaveProfeCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtClaveProfeCaretUpdate
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtClaveProfeCaretUpdate
+
+    private void txtClaveProfeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtClaveProfeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtClaveProfeActionPerformed
+
+    private void btnNuevoProfeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoProfeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnNuevoProfeActionPerformed
+
+    private void btnEliminarProfeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarProfeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEliminarProfeActionPerformed
+
+    private void btnGuardarProfeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarProfeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnGuardarProfeActionPerformed
+
+    private void btnsalir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalir1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnsalir1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -614,13 +853,23 @@ public void limpiarTodo(){
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEliminarProfe;
+    private javax.swing.JButton btnGuardarProfe;
+    private javax.swing.JButton btnNuevoProfe;
     private javax.swing.JButton btneliminar1;
     private javax.swing.JButton btnfoto;
     private javax.swing.JButton btnguardar;
     private javax.swing.JButton btnnuevo;
     private javax.swing.JButton btnsalir;
+    private javax.swing.JButton btnsalir1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -630,12 +879,19 @@ public void limpiarTodo(){
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private com.toedter.calendar.JDateChooser jdateFecha;
     private javax.swing.JLabel lblFoto;
     private javax.swing.JTabbedPane pane;
     private javax.swing.JTable tblDatos;
+    private javax.swing.JTextField txtApellidosProfe;
+    private javax.swing.JPasswordField txtClaveProfe;
+    private javax.swing.JTextField txtCorreoProfe;
+    private javax.swing.JTextField txtNombreProfe;
+    private javax.swing.JTextField txtTelefonoProfe;
     private javax.swing.JTextField txtUsuario;
+    private javax.swing.JTextField txtUsuarioProfe;
     private javax.swing.JTextField txtapellidos;
     private javax.swing.JTextField txtbuscar;
     private javax.swing.JPasswordField txtclave;

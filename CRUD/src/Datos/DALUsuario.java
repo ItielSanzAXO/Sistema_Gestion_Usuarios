@@ -207,7 +207,7 @@ public class DALUsuario {
     // Consultas SQL ajustadas a las tablas Administrador, Alumno y Profesor
     String sqlAdmin = "SELECT idadministrador FROM administrador WHERE usuario = ? AND pass = ?";
     String sqlAlumno = "SELECT idalumno FROM alumno WHERE usuario = ? AND clave = ? AND estado = true";
-    String sqlProfesor = "SELECT idprofesor FROM profesor WHERE correo = ? AND telefono = ?";
+    String sqlProfesor = "SELECT idprofesor FROM profesor WHERE usuario = ? AND clave = ?";
 
     // Array para almacenar el rol (1 = Admin, 2 = Alumno, 3 = Profesor) y el ID correspondiente
     Object[] resultado = new Object[2];
