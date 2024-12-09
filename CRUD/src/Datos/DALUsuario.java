@@ -30,8 +30,8 @@ public class DALUsuario {
 
     public void mostrarLista(DefaultTableModel model, JTable tabla) {
         try {
-            String sql = "select idusuario, matricula,nombre,apellidos,correo from usuario "
-                    + "where estado=1 order by nombre asc ";
+            String sql = "select idalumno, matricula,nombre,apellidos,correo from alumno "
+                    + "order by nombre asc ";
             ResultSet rs = con.ejecutarSQLSelect(sql);
             c.cargarTabla(5, rs, model, tabla);
 
@@ -43,8 +43,8 @@ public class DALUsuario {
 
     public void buscarLista(DefaultTableModel model, JTable tabla, String dato) {
         try {
-            String sql = "select idusuario, matricula,nombre,apellidos,correo from usuario\n"
-                    + "where estado=1 and (nombre like '%" + dato + "%' or apellidos like '%" + dato + "%' ) order by nombre asc";
+            String sql = "select idalumno, matricula,nombre,apellidos,correo from alumno\n"
+                    + "where (nombre like '%" + dato + "%' or apellidos like '%" + dato + "%' ) order by nombre asc";
             ResultSet rs = con.ejecutarSQLSelect(sql);
             c.cargarTabla(5, rs, model, tabla);
 
@@ -57,7 +57,7 @@ public class DALUsuario {
     public void insertarDatos(Usuario u) {
 
         try {
-            String sql = "INSERT INTO usuario(matricula, nombre, apellidos, correo, "
+            String sql = "INSERT INTO alumno(matricula, nombre, apellidos, correo, "
                     + "telefono, usuario, clave, fecha, foto)\n"
                     + "VALUES (?, ?, ?, ?, ?, ?, ?, '" + u.getFecha() + "', ?);";
             PreparedStatement ps = con.con.prepareStatement(sql);
@@ -72,9 +72,9 @@ public class DALUsuario {
             boolean ejecucion = con.ejecutarSQL(ps);
             if (ejecucion == true) {
 
-                JOptionPane.showMessageDialog(null, "Usuario Correctamente Ingresado ");
+                JOptionPane.showMessageDialog(null, "Alumno Correctamente Ingresado ");
             } else if (ejecucion == false) {
-                JOptionPane.showMessageDialog(null, "Error Al Igresar Usuario");
+                JOptionPane.showMessageDialog(null, "Error Al Igresar Alumno");
             }
 
         } catch (Exception e) {
@@ -86,9 +86,9 @@ public class DALUsuario {
     public void modificarDatosSinFoto(Usuario u) {
         System.out.println("UPDATE SIN FOTO");
         try {
-            String sql = "UPDATE usuario SET matricula=?, nombre=?, apellidos=?, correo=?, telefono=?, \n"
+            String sql = "UPDATE alumno SET matricula=?, nombre=?, apellidos=?, correo=?, telefono=?, \n"
                     + "usuario=?, clave=?, fecha='" + u.getFecha() + "'\n"
-                    + " WHERE idusuario=?";
+                    + " WHERE idalumno=?";
             PreparedStatement ps = con.con.prepareStatement(sql);
             ps.setString(1, u.getMatricula());
             ps.setString(2, u.getNombre());
@@ -117,9 +117,9 @@ public class DALUsuario {
     public void modificarDatosConFoto(Usuario u) {
         System.out.println("UPDATE CON FOTO");
         try {
-            String sql = "UPDATE usuario SET matricula=?, nombre=?, apellidos=?, correo=?, telefono=?, \n"
+            String sql = "UPDATE alumno SET matricula=?, nombre=?, apellidos=?, correo=?, telefono=?, \n"
                     + "usuario=?, clave=?, foto=?, fecha='" + u.getFecha() + "'\n"
-                    + " WHERE idusuario=?";
+                    + " WHERE idalumno=?";
             PreparedStatement ps = con.con.prepareStatement(sql);
             ps.setString(1, u.getMatricula());
             ps.setString(2, u.getNombre());
@@ -134,9 +134,9 @@ public class DALUsuario {
             System.out.println("" + ejecucion );
             if (ejecucion == true) {
 
-                JOptionPane.showMessageDialog(null, "Usuario Correctamente Actualizado ");
+                JOptionPane.showMessageDialog(null, "Alumno Correctamente Actualizado ");
             } else if (ejecucion == false) {
-                JOptionPane.showMessageDialog(null, "Error Al Modificar Usuario");
+                JOptionPane.showMessageDialog(null, "Error Al Modificar Alumno");
             }
 
         } catch (Exception e) {
@@ -153,7 +153,7 @@ public class DALUsuario {
         try {
             String sql = "SELECT matricula, nombre, apellidos, correo, telefono, usuario, \n"
                     + "  clave, fecha, foto\n"
-                    + "  FROM usuario WHERE idusuario=?";
+                    + "  FROM alumno WHERE idalumno=?";
             PreparedStatement ps = con.con.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
@@ -185,16 +185,16 @@ public class DALUsuario {
     public void eliminarUsuario(Usuario u) {
 
         try {
-            String sql = "DELETE FROM public.usuario WHERE idusuario=?";
+            String sql = "DELETE FROM public.alumno WHERE idalumno=?";
             //String sql = "UPDATE usuario SET estado=0 WHERE idusuario=?";
             PreparedStatement ps = con.con.prepareStatement(sql);
             ps.setInt(1, u.getIdusuario());
             boolean ejecucion = con.ejecutarSQL(ps);
             if (ejecucion == true) {
 
-                JOptionPane.showMessageDialog(null, "Usuario Correctamente Eliminado ");
+                JOptionPane.showMessageDialog(null, "Alumno Correctamente Eliminado ");
             } else if (ejecucion == false) {
-                JOptionPane.showMessageDialog(null, "Error Al Eliminar Usuario");
+                JOptionPane.showMessageDialog(null, "Error Al Eliminar Alumno");
             }
 
         } catch (Exception e) {

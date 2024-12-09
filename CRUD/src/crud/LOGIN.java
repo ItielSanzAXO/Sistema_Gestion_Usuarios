@@ -10,6 +10,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import Datos.*;
 import Alumno.*;
+import Profesor.Profesor;
 /**
  *
  * @author ItielSanz
