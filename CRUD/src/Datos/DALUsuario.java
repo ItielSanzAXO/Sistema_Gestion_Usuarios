@@ -16,6 +16,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import Profesor.Profe;
 import crud.Main;
 
 /**
@@ -257,6 +259,38 @@ public class DALUsuario {
     resultado[0] = 0; // Usuario o contraseña incorrectos
     resultado[1] = null;
     return resultado;
+    }
+
+    public void insertarDatosProfe(Profe u) {
+        try {
+            String sql = "INSERT INTO Profesor (nombre, apellidos, correo, telefono, usuario, clave) "
+                    + "VALUES (?, ?, ?, ?, ?, ?)";
+            PreparedStatement ps = con.con.prepareStatement(sql);
+            ps.setString(1, u.getNombre());
+            ps.setString(2, u.getApellidos());
+            ps.setString(3, u.getCorreo());
+            ps.setString(4, u.getTelefono());
+            ps.setString(5, u.getUsuario());
+            ps.setString(6, u.getClave());
+            boolean ejecucion = con.ejecutarSQL(ps);
+            if (ejecucion == true) {
+                JOptionPane.showMessageDialog(null, "Profesor Correctamente Ingresado ");
+            } else if (ejecucion == false) {
+                JOptionPane.showMessageDialog(null, "Error Al Igresar Profesor");
+            }
+        } catch (Exception e) {
+            System.out.println("Error al insertar Profesor: " + e);
+        }
+    }
+
+    public void modificarDatosProfe(Profe p) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'modificarDatosProfe'");
+    }
+
+    public void buscarListaProfe(DefaultTableModel modelo_tabla, JTable tblDatos, String dato) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'buscarListaProfe'");
     }
 
 }

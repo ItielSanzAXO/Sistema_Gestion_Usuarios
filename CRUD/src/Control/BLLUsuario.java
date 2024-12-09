@@ -7,6 +7,7 @@ package Control;
 
 import Datos.DALUsuario;
 import Datos.Usuario;
+import Profesor.Profe;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -48,5 +49,16 @@ public class BLLUsuario {
     
     public void eliminarUsuario(Usuario u){
         dal.eliminarUsuario(u);
+    }
+
+    public void insertarDatosProfe(Profe p) {
+        dal.insertarDatosProfe(p);
+    }
+    public void modificarDatosProfe(Profe p) {
+        dal.modificarDatosProfe(p);
+    }
+
+    public void buscarListaProfe(DefaultTableModel modelo_tabla, JTable tblDatos, String dato) {
+        dal.buscarListaProfe(modelo_tabla, tblDatos, dato);
     }
 }
