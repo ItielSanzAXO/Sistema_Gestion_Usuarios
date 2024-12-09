@@ -61,4 +61,8 @@ public class BLLUsuario {
     public void buscarListaProfe(DefaultTableModel modelo_tabla, JTable tblDatos, String dato) {
         dal.buscarListaProfe(modelo_tabla, tblDatos, dato);
     }
+
+    public void eliminarProfe(Profe p) {
+        dal.eliminarProfe(p);
+    }
 }

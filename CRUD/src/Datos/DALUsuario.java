@@ -293,4 +293,9 @@ public class DALUsuario {
         throw new UnsupportedOperationException("Unimplemented method 'buscarListaProfe'");
     }
 
+    public void eliminarProfe(Profe p) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'eliminarProfe'");
+    }
+
 }

@@ -9,6 +9,8 @@ import Control.BLLUsuario;
 import Control.ConvertirMayusculas;
 import Control.Validar;
 import Datos.Usuario;
+import Profesor.Profe;
+import Profesor.Profesor;
 import java.awt.Image;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -40,6 +42,7 @@ public class IU_GESTIONUSUARIO extends javax.swing.JFrame {
    int longitudBytes, apretafoto=0, id=0;
    boolean consultar=false;
    Usuario u=new Usuario();
+   Profe p=new Profe();
     
     public IU_GESTIONUSUARIO() {
         initComponents();
@@ -246,12 +249,12 @@ public void botonGuardarProfe(){
     
     if(consultar==false){
     //Insertar
-        bll.insertarDatosProfe(u);
+        bll.insertarDatosProfe(p);
         limpiarTodo();
      
     }else if(consultar==true){
     //Modificar
-        bll.modificarDatosProfe(u);
+        bll.modificarDatosProfe(p);
         limpiarTodo();
     }
 }
@@ -862,15 +865,15 @@ public void buscar(){
     }//GEN-LAST:event_btnsalirActionPerformed
 
     private void txtNombreProfeCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtNombreProfeCaretUpdate
-        // TODO add your handling code here:
+    validarIngresoProfe();        // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreProfeCaretUpdate
 
     private void txtApellidosProfeCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtApellidosProfeCaretUpdate
-        // TODO add your handling code here:
+    validarIngresoProfe();        // TODO add your handling code here:
     }//GEN-LAST:event_txtApellidosProfeCaretUpdate
 
     private void txtCorreoProfeCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtCorreoProfeCaretUpdate
-        // TODO add your handling code here:
+    validarIngresoProfe();    // TODO add your handling code here:
     }//GEN-LAST:event_txtCorreoProfeCaretUpdate
 
     private void txtTelefonoProfeCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtTelefonoProfeCaretUpdate
@@ -878,11 +881,11 @@ public void buscar(){
     }//GEN-LAST:event_txtTelefonoProfeCaretUpdate
 
     private void txtUsuarioProfeCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtUsuarioProfeCaretUpdate
-        // TODO add your handling code here:
+    validarIngresoProfe();    // TODO add your handling code here:
     }//GEN-LAST:event_txtUsuarioProfeCaretUpdate
 
     private void txtClaveProfeCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtClaveProfeCaretUpdate
-        // TODO add your handling code here:
+    validarIngresoProfe();    // TODO add your handling code here:
     }//GEN-LAST:event_txtClaveProfeCaretUpdate
 
     private void txtClaveProfeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtClaveProfeActionPerformed
@@ -890,18 +893,27 @@ public void buscar(){
     }//GEN-LAST:event_txtClaveProfeActionPerformed
 
     private void btnNuevoProfeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoProfeActionPerformed
-        // TODO add your handling code here:
+    limpiarTodoProfe();        // TODO add your handling code here:
     }//GEN-LAST:event_btnNuevoProfeActionPerformed
 
     private void btnEliminarProfeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarProfeActionPerformed
-        // TODO add your handling code here:
+    int respuesta=JOptionPane.showConfirmDialog(null, "¿Realmente Quiere Eliminar Este Usuario?");
+            if(respuesta==0){
+                p.setIdprofesor(id);
+                bll.eliminarProfe(p);
+                limpiarTodo();
+            }        // TODO add your handling code here:
     }//GEN-LAST:event_btnEliminarProfeActionPerformed
 
     private void btnGuardarProfeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarProfeActionPerformed
-        // TODO add your handling code here:
+    botonGuardarProfe();        // TODO add your handling code here:
     }//GEN-LAST:event_btnGuardarProfeActionPerformed
 
     private void btnsalir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalir1ActionPerformed
+       LOGIN login = new LOGIN();
+        login.setLocationRelativeTo(null);
+        login.setVisible(true);
+        this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_btnsalir1ActionPerformed
 
