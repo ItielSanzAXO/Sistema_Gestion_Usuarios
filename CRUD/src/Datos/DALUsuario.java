@@ -205,9 +205,9 @@ public class DALUsuario {
     
     public Object[] validarLogin(String usuario, String pass) {
     // Consultas SQL ajustadas a las tablas Administrador, Alumno y Profesor
-    String sqlAdmin = "SELECT idAdministrador FROM Administrador WHERE usuario = ? AND pass = ?";
-    String sqlAlumno = "SELECT idAlumno FROM Alumno WHERE usuario = ? AND clave = ? AND estado = true";
-    String sqlProfesor = "SELECT idProfesor FROM Profesor WHERE correo = ? AND telefono = ?";
+    String sqlAdmin = "SELECT idadministrador FROM administrador WHERE usuario = ? AND pass = ?";
+    String sqlAlumno = "SELECT idalumno FROM alumno WHERE usuario = ? AND clave = ? AND estado = true";
+    String sqlProfesor = "SELECT idprofesor FROM profesor WHERE correo = ? AND telefono = ?";
 
     // Array para almacenar el rol (1 = Admin, 2 = Alumno, 3 = Profesor) y el ID correspondiente
     Object[] resultado = new Object[2];
