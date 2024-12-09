@@ -10,12 +10,6 @@ import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import Datos.*;
 import Alumno.*;
-import Control.*;
-import java.util.Date;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-
-
 /**
  *
  * @author ItielSanz

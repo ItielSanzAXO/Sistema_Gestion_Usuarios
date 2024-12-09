@@ -35,9 +35,9 @@ public class Conexion implements Serializable{
         try{
             
             Class.forName("org.postgresql.Driver");
-            //c=DriverManager.getConnection("jdbc:postgresql://192.168.0.112:5432/sistemas",
+            //c=DriverManager.getConnection("jdbc:postgresql://192.168.2.6:5432/sistemas",
             //        "postgres","password");
-            c=DriverManager.getConnection("jdbc:postgresql://192.168.2.6:5432/sistemas",
+            c=DriverManager.getConnection("jdbc:postgresql://192.168.2.6:5432/itiz",
                     "postgres","password");
             System.out.println("Conectado a POSTGRESQL");
         }catch (SQLException e) {
