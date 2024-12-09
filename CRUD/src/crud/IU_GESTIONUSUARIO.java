@@ -39,7 +39,7 @@ public class IU_GESTIONUSUARIO extends javax.swing.JFrame {
    DefaultTableModel modelo_tabla;
    BLLUsuario bll=new BLLUsuario();
    FileInputStream fis;
-   int longitudBytes, apretafoto=0, id=0;
+   int longitudBytes, apretafoto=0, id=0, idp=0;
    boolean consultar=false;
    Usuario u=new Usuario();
    Profe p=new Profe();
@@ -75,7 +75,7 @@ public class IU_GESTIONUSUARIO extends javax.swing.JFrame {
     //Alumno
         v.validarSoloLetreas(txtnombre);
         v.validarSoloLetreas(txtapellidos);
-        v.validarSoloNumeros(txtmatricula);
+//      v.validarSoloNumeros(txtmatricula);
         v.validarSoloNumeros(txttelefono);
     //Limitar caracteres 
         v.limitarCaracteres(txtmatricula, 9);
@@ -86,10 +86,10 @@ public class IU_GESTIONUSUARIO extends javax.swing.JFrame {
         v.limitarCaracteres(txtUsuario, 20);
         v.limitarCaracteres(txtclave, 50);
     //Convertir a Mayus
-        txtnombre.setDocument(new ConvertirMayusculas());
-        txtapellidos.setDocument(new ConvertirMayusculas());
-        txtbuscar.setDocument(new ConvertirMayusculas());
-        txtUsuario.setDocument(new ConvertirMayusculas());
+//      txtnombre.setDocument(new ConvertirMayusculas());
+//      txtapellidos.setDocument(new ConvertirMayusculas());
+//      txtbuscar.setDocument(new ConvertirMayusculas());
+//      txtUsuario.setDocument(new ConvertirMayusculas());
     
     //Profesor
         v.validarSoloLetreas(txtNombreProfe);
@@ -97,7 +97,6 @@ public class IU_GESTIONUSUARIO extends javax.swing.JFrame {
         v.validarSoloLetreas(txtCorreoProfe);
         v.validarSoloNumeros(txtTelefonoProfe);
         v.validarSoloLetreas(txtUsuarioProfe);
-        v.validarSoloLetreas(txtClaveProfe);
     //Limitar caracteres
         v.limitarCaracteres(txtNombreProfe, 20);
         v.limitarCaracteres(txtApellidosProfe, 100);
@@ -133,7 +132,7 @@ public class IU_GESTIONUSUARIO extends javax.swing.JFrame {
         String contra=txtclave.getText();
         Date fech=jdateFecha.getDate();
         
-        if(tam !=9||nom.isEmpty()|ape.isEmpty()||estado==false||tel.isEmpty()
+        if(tam !=4||nom.isEmpty()|ape.isEmpty()||estado==false||tel.isEmpty()
                 ||usu.isEmpty()||contra.isEmpty()||fech==null){
         btnguardar.setEnabled(false);
         }else{
@@ -239,23 +238,23 @@ public void botonGuardarProfe(){
     String usu=txtUsuarioProfe.getText().trim();
     String clave=txtClaveProfe.getText();
     
-    u.setIdusuario(id);
-    u.setNombre(nom);
-    u.setApellidos(ap);
-    u.setCorreo(correo);
-    u.setTelefono(tel);
-    u.setUsuario(usu);
-    u.setClave(clave);
+    p.setIdprofesor(idp);
+    p.setNombre(nom);
+    p.setApellidos(ap);
+    p.setCorreo(correo);
+    p.setTelefono(tel);
+    p.setUsuario(usu);
+    p.setClave(clave);
     
     if(consultar==false){
     //Insertar
         bll.insertarDatosProfe(p);
-        limpiarTodo();
+        limpiarTodoProfe();
      
     }else if(consultar==true){
     //Modificar
         bll.modificarDatosProfe(p);
-        limpiarTodo();
+        limpiarTodoProfe();
     }
 }
 
